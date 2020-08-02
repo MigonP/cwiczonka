@@ -1,9 +1,11 @@
-from urllib.request import urlopen, install_opener, OpenerDirector
+from urllib.request import urlopen
 from bs4 import BeautifulSoup
 
-html = open('https://steamcommunity.com/sharedfiles/filedetails/?id=1497870430')
+html = open('https://www.x-rates.com/table/?from=PLN&amount=1')
 op = urlopen(str(html))
 bs = BeautifulSoup(op.read(),'html.parser')
-for tag in bs:
+waluta = bs.find_all(class_="moduleContent")
+for x in waluta:
+    print(x.get_text())
     
 
